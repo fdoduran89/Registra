@@ -1,6 +1,6 @@
 ## Registraduría
 Para clonar repositorio 
-`https://github.com/fdoduran89/Registraduria.git`
+`$ git clone https://github.com/fdoduran89/Registraduria.git`
 
 ## Instalación y configuración
 
