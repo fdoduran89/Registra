@@ -1,6 +1,6 @@
 from flask import Flask
 from config import config
-import routes.user as re
+import routes.mesa as rm
 from flask_mongoengine import MongoEngine
 
 app = Flask(__name__)
@@ -13,11 +13,11 @@ def index():
 
 # Routes
 app.add_url_rule('/', 'index', index)
-app.add_url_rule('/regisNal', 'find_user', re.find_user)
-app.add_url_rule('/regisNal/<user_username>', 'find_user', re.find_user)
-app.add_url_rule('/regisNal', 'insert_user', re.insert_user, methods= ['POST'])
-app.add_url_rule('/regisNal/<user_username>', 'update_user', re.update_user, methods= ['PUT'])
-app.add_url_rule('/regisNal/<user_username>', 'delete_user', re.delete_user, methods= ['DELETE'])
+app.add_url_rule('/regisNal', 'find_table', rm.find_table)
+app.add_url_rule('/regisNal/<n_mesa>', 'find_table', rm.find_table)
+app.add_url_rule('/regisNal', 'insert_mesa', rm.insert_table, methods= ['POST'])
+app.add_url_rule('/regisNal/<n_mesa>', 'update_table', rm.update_table, methods= ['PUT'])
+app.add_url_rule('/regisNal/<n_mesa>', 'delete_table', rm.delete_table, methods= ['DELETE'])
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])

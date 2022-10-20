@@ -6,7 +6,7 @@ class CRUDController(ABC):
         pass
 
     @abstractmethod
-    def get_by_username(self, user_name):
+    def get_by_id(self, id_item):
         pass
 
     @abstractmethod
@@ -14,9 +14,9 @@ class CRUDController(ABC):
         pass
 
     @abstractmethod
-    def update(self, user_name, content):
+    def update(self, id_item, content):
         pass
 
     @abstractmethod
-    def delete(self, user_name):
+    def delete(self, id_item):
         pass
