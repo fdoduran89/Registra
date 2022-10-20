@@ -1,5 +1,5 @@
-from typing_extensions import Required
 import mongoengine as me
+
 
 class Mesa(me.Document):
     N_mesa = me.IntField(required=True)
