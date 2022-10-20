@@ -46,7 +46,7 @@ def find_table(n_mesa):
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del estudiante'
+            'message': 'Hubo un error al obtener la información de la mesa'
         }, 500)
 
 # delete table
