@@ -3,5 +3,6 @@ class DevConfig():
 
 config = {
     'development': DevConfig,
-    'MONGO_URI': 'mongodb+srv://Registraeq2:Registraeq2@cluster0.9ptxiq8.mongodb.net/?retryWrites=true&w=majority'
+    #'MONGO_URI': 'mongodb://localhost:27017/registraduria'
+    'MONGO_URI':'mongodb+srv://yaneth:yaneth@cluster0.wintjaq.mongodb.net/?retryWrites=true&w=majority'
 }
