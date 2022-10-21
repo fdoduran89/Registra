@@ -3,7 +3,7 @@ from controllers.mesa import MesaController
 
 mesa_controller = MesaController()
 
-# create student
+# create table
 def insert_table():
     body = request.get_json()
     try:
