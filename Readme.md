@@ -6,10 +6,13 @@ Para clonar repositorio
 
 Una vez clonado el proyecto, acceder al directorio, 
 crear el entorno virtual y luego activarlo.
-
+window
 `$ py -m venv venv`
-
 `$ venv\Scripts\activate`
+
+para linux 
+`$ python3 -m venv env
+`$ source env/bin/activate
 
 Instalar las librerías del archivo requirements.txt
 
