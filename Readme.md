@@ -16,7 +16,7 @@ Instalar las librerías del archivo requirements.txt
 `$ pip install -r requirements.txt`
 
 para correr en windows
-python .\src\app.py
+`$ python .\src\app.py
 
 para correr el linux
-python src/app.py
+`$ python src/app.py
