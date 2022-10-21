@@ -1,6 +1,5 @@
 import mongoengine as me
 
-
 class Mesa(me.Document):
     N_mesa = me.IntField(required=True)
     N_cedulas = me.IntField(required=True)
