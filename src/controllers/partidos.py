@@ -9,7 +9,7 @@ class PartidoController(CRUDController):
     
 
     def get_all(self):
-        return self.partidoRepository.get_all
+        return self.partidoRepository.get_all()
     
 
     def get_by_id(self, id_item):

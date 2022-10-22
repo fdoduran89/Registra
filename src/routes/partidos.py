@@ -27,6 +27,7 @@ def insert_partido():
 def find_partidos():
     try:
         partidos = partido_controller.get_all()
+        print(partidos)
         return make_response(jsonify(partidos), 200)
     except Exception as ex:
         print(ex)
