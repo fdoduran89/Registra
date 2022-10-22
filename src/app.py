@@ -33,6 +33,14 @@ app.add_url_rule('/regisNalP/<nombre_partido>', 'delete_partido', rp.delete_part
 
 
 
+#candidatos
+app.add_url_rule('/', 'index', index)
+app.add_url_rule('/regisNal', 'find_candidato', rm.find_candidato)
+app.add_url_rule('/regisNal/<nameCandidato>', 'find_candidato', rm.find_candidato)
+app.add_url_rule('/regisNal', 'insert_candidato', rm.insert_candidato, methods= ['POST'])
+app.add_url_rule('/regisNal/<n_mesa>', 'update_candidato', rm.update_candidato, methods= ['PUT'])
+app.add_url_rule('/regisNal/<n_mesa>', 'delete_candidato', rm.delete_candidato, methods= ['DELETE'])
+
 if __name__ == '__main__':
     app.config.from_object(config['development'])
     app.run()
