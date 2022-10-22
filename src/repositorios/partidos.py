@@ -6,8 +6,8 @@ class PartidoRepository():
     
     def get_all(self):
         partidos = []
-        for partidos in Partido.objects:
-            partidos.append(partidos)
+        for part in Partido.objects:
+            partidos.append(part)
         return partidos
     
     def get_by_id(self, id_item):
