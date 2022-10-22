@@ -1,42 +1,28 @@
 from controllers.abstract import CRUDController
-from models.partidos import Partido
+#from models.partidos import Partido
+from repositorios.partidos import PartidoRepository
+
 
 class PartidoController(CRUDController):
     def __init__(self) -> None:
-        super().__init__()
+        self.partidoRepository = PartidoRepository()
     
-    def get_all(self):
-        partidos = []
-        for partidos in Partido.objects:
-            partidos.append(partidos)
-        return partidos
-    
-    def get_by_id(self, id_item):
-        return Partido.objects(nombre_partido= id_item).first()
-    
-    def create(self, content):
-        partidos = Partido(
-            
-            nombre_partido=content['nombre_partido'],
-            lema_partido=content['lema_partido']
 
-        )
-        partidos.save()
-        return partidos
+    def get_all(self):
+        return self.partidoRepository.get_all
     
-    def update(self, id_item, content):
-        partidos = self.get_by_id(id_item)
-        if partidos:
-            partidos.update(
-                nombre_partido=content.get('nombre_partido', partidos.nombre_partido),
-                lema_partido=content.get('lema_partido', partidos.lema_partido)
-            )
-            return partidos
-        return None
+
+    def get_by_id(self, id_item):
+        return self.partidoRepository.get_by_id(id_item)
     
+
+    def create(self, content):
+        return self.partidoRepository.create(content)
+    
+
+    def update(self, id_item, content): 
+        return self.partidoRepository.update(id_item, content)
+    
+
     def delete(self, id_item):
-        partidos = self.get_by_id(id_item)
-        if partidos:
-            partidos.delete()
-            return partidos
-        return None
+        return self.partidoRepository.delete(id_item)
