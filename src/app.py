@@ -17,11 +17,11 @@ def index():
 
 #Mesas
 app.add_url_rule('/', 'index', index)
-app.add_url_rule('/regisNal', 'find_table', rm.find_table)
-app.add_url_rule('/regisNal/<n_mesa>', 'find_table', rm.find_table)
+app.add_url_rule('/regisNal', 'find_tables', rm.find_tables)
+app.add_url_rule('/regisNal/<Nmesa>', 'find_table', rm.find_table)
 app.add_url_rule('/regisNal', 'insert_table', rm.insert_table, methods= ['POST'])
-app.add_url_rule('/regisNal/<n_mesa>', 'update_table', rm.update_table, methods= ['PUT'])
-app.add_url_rule('/regisNal/<n_mesa>', 'delete_table', rm.delete_table, methods= ['DELETE'])
+app.add_url_rule('/regisNal/<Nmesa>', 'update_table', rm.update_table, methods= ['PUT'])
+app.add_url_rule('/regisNal/<Nmesa>', 'delete_table', rm.delete_table, methods= ['DELETE'])
 
 
 #partidos

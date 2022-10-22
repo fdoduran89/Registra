@@ -1,39 +1,23 @@
 from controllers.abstract import CRUDController
-from models.mesa import Mesa
+#from models.mesa import Mesa
+from repositorios.mesa import MesaRepository
 
 class MesaController(CRUDController):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self):
+        self.mesaRepository = MesaRepository()
+
     
     def get_all(self):
-        mesa = []
-        for mesa in Mesa.objects:
-            mesa.append(mesa)
-        return mesa
+        return self.mesaRepository.get_all()
     
     def get_by_id(self, id_item):
-        return Mesa.objects(N_mesa= id_item).first()
+        return self.mesaRepository.get_by_id(id_item)
     
     def create(self, content):
-        mesa = Mesa(
-            N_mesa=content['N_mesa'],
-            N_cedulas=content['N_cedulas']
-        )
-        mesa.save()
-        return mesa
+        return self.mesaRepository.create(content)
     
     def update(self, id_item, content):
-        mesa = self.get_by_id(id_item)
-        if mesa:
-            mesa.update(
-                N_cedulas=content.get('N_cedulas', mesa.N_cedulas)
-            )
-            return mesa
-        return None
+        return self.mesaRepository.update(id_item, content)
     
     def delete(self, id_item):
-        mesa = self.get_by_id(id_item)
-        if mesa:
-            mesa.delete()
-            return mesa
-        return None
+        return self.mesaRepository.delete(id_item)
