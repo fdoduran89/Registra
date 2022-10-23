@@ -3,27 +3,24 @@ from controllers.candidato import CandidatoController
 
 candidato_controller = CandidatoController()
 
-# create candidato
-
 def insert_candidato():
     body = request.get_json()
     try:
-        candidatos = candidato_controller.get_by_id(body['nameCandidato'])
+        candidatos = candidato_controller.get_by_id(body['numberCedula'])
         if candidatos:
             return make_response({
-                'message': 'El candidato' + body['nameCandidato'] + ' Ya está registrado en el sistema'
+                'message': 'El candidato ' + str(body['numberCedula']) + ' Ya está registrado en el sistema'
             }, 400)
         candidato_controller.create(body)
         return make_response({
-            'message': 'El candidato' + body['nameCandidato'] + ' ha sido creado satisfactoriamente.'
+            'message': 'El candidato ' + str(body['numberCedula']) + ' ha sido creado satisfactoriamente.'
         }, 201)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error en la creación del candidato'
+            'message': 'Hubo un error en la creación del candidato: ' + str(ex)
         }, 500)
 
-# Find candidatos
 def find_candidatos():
     try:
         candidatos = candidato_controller.get_all()
@@ -34,7 +31,6 @@ def find_candidatos():
             'message': 'Hubo un error al obtener la información de los candidatos'
         }, 500)
 
-# Find candidato
 def find_candidato(nameCandidato):
     try:
         candidatos = candidato_controller.get_by_id(nameCandidato)
@@ -50,7 +46,6 @@ def find_candidato(nameCandidato):
             'message': 'Hubo un error al obtener la información del candidato'
         }, 500)
 
-# delete partido
 def delete_candidato(nameCandidato):
     try:
         delete = candidato_controller.delete(nameCandidato)
@@ -68,7 +63,6 @@ def delete_candidato(nameCandidato):
             'message': 'Hubo un error al eliminar el candidato'
         }, 500)
 
-# update candidato
 def update_candidato(nameCandidato):
     body = request.get_json()
     try:

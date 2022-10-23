@@ -3,8 +3,8 @@ from models.mesa import Mesa
 class MesaRepository():
     def get_all(self):
         mesa = []
-        for mesa in Mesa.objects:
-            mesa.append(mesa)
+        for me in Mesa.objects:
+            mesa.append(me)
         return mesa
 
     def get_by_id(self, id_item):
