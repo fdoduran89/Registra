@@ -2,13 +2,13 @@ from controllers.abstract import CRUDController
 from repositorios.candidatos import CandidatoRepository
 
 
-class CandidatoRepository(CRUDController):
+class CandidatoController(CRUDController):
     def __init__(self) -> None:
         self.candidatoRepository = CandidatoRepository()
     
 
     def get_all(self):
-        return self.candidatoRepository.get_all
+        return self.candidatoRepository.get_all()
     
 
     def get_by_id(self, id_item):

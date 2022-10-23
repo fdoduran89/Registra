@@ -6,8 +6,8 @@ class CandidatoRepository():
     
     def get_all(self):
         candidato = []
-        for candidato in Candidato.objects:
-            candidato.append(candidato)
+        for candi in Candidato.objects:
+            candidato.append(candi)
         return candidato
     
     def create(self, content):
