@@ -3,7 +3,6 @@ from controllers.mesa import MesaController
 
 mesa_controller = MesaController()
 
-# create table
 def insert_table():
     body = request.get_json()
     try:
@@ -22,7 +21,6 @@ def insert_table():
             'message': 'Hubo un error en la creación de la mesa'
         }, 500)
 
-# Find tables
 def find_tables():
     try:
         mesa = mesa_controller.get_all()
@@ -33,7 +31,6 @@ def find_tables():
             'message': 'Hubo un error al obtener la información de las mesas'
         }, 500)
 
-# Find table
 def find_table(Nmesa):
     try:
         mesa = mesa_controller.get_by_id(Nmesa)
@@ -49,7 +46,6 @@ def find_table(Nmesa):
             'message': 'Hubo un error al obtener la información de la mesa'
         }, 500)
 
-# delete table
 def delete_table(Nmesa):
     try:
         delete = mesa_controller.delete(Nmesa)
@@ -67,7 +63,6 @@ def delete_table(Nmesa):
             'message': 'Hubo un error al eliminar la mesa'
         }, 500)
 
-# update table
 def update_table(Nmesa):
     body = request.get_json()
     try:
