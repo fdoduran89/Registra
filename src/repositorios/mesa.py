@@ -1,11 +1,14 @@
 from models.mesa import Mesa
 
 class MesaRepository():
+    def __init__(self) -> None:
+        super().__init__()
+
     def get_all(self):
-        mesa = []
-        for me in Mesa.objects:
-            mesa.append(me)
-        return mesa
+        mesas = []
+        for mesa in Mesa.objects:
+            mesas.append(mesa)
+        return mesas
 
     def get_by_id(self, id_item):
         return Mesa.objects(Nmesa= id_item).first()
@@ -22,6 +25,7 @@ class MesaRepository():
         mesa = self.get_by_id(id_item)
         if mesa:
             mesa.update(
+                Nmesa=content.get('Nmesa', mesa.Nmesa),
                 Ncedulas=content.get('Ncedulas', mesa.Ncedulas)
             )
             return mesa

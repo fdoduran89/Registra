@@ -17,8 +17,8 @@ def index():
 
 # Routes
 
-#Mesas
 app.add_url_rule('/', 'index', index)
+#Mesas
 app.add_url_rule('/regisNal', 'find_tables', rm.find_tables)
 app.add_url_rule('/regisNal/<Nmesa>', 'find_table', rm.find_table)
 app.add_url_rule('/regisNal', 'insert_table', rm.insert_table, methods= ['POST'])
@@ -36,8 +36,9 @@ app.add_url_rule('/regisNalP/<nombre_partido>', 'delete_partido', rp.delete_part
 
 #candidatos
 
+app.add_url_rule('/regisNalC', 'find_candidatos', rc.find_candidatos)
 app.add_url_rule('/regisNalC', 'find_candidato', rc.find_candidato)
-app.add_url_rule('/regisNalC/<nameCandidato>', 'find_candidato', rc.find_candidato)
+app.add_url_rule('/regisNalC/<numberCedula>', 'find_candidato', rc.find_candidato)
 app.add_url_rule('/regisNalC', 'insert_candidato', rc.insert_candidato, methods= ['POST'])
 app.add_url_rule('/regisNalC/<numberCedula>', 'update_candidato', rc.update_candidato, methods= ['PUT'])
 app.add_url_rule('/regisNalC/<numberCedula>', 'delete_candidato', rc.delete_candidato, methods=['DELETE'])
