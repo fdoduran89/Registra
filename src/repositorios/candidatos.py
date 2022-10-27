@@ -19,7 +19,8 @@ class CandidatoRepository():
             numberCedula=content['numberCedula'],
             numberResolucion=content['numberResolucion'],
             nameCandidato=content['nameCandidato'],
-            apellidoCandidato=content['apellidoCandidato']                     
+            apellidoCandidato=content['apellidoCandidato'] ,
+            id_partido=content['id_partido']                    
         )
         candidato.save()
         return candidato
@@ -31,7 +32,8 @@ class CandidatoRepository():
                 numberCedula=content.get('numberCedula', candidatos.numberCedula),
                 numberResolucion=content.get('numberResolucion', candidatos.numberResolucion),
                 nameCandidato=content.get('nameCandidato', candidatos.nameCandidato),
-                apellidoCandidato=content.get('apellidoCandidato', candidatos.apellidoCandidato)
+                apellidoCandidato=content.get('apellidoCandidato', candidatos.apellidoCandidato),
+                id_partido=content.get('id_partido', candidatos.id_partido)
             )
             return candidatos
         return None

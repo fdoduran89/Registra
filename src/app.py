@@ -17,8 +17,8 @@ def index():
 
 # Routes
 
-#Mesas
 app.add_url_rule('/', 'index', index)
+#Mesas
 app.add_url_rule('/regisNal', 'find_tables', rm.find_tables)
 app.add_url_rule('/regisNal/<Nmesa>', 'find_table', rm.find_table)
 app.add_url_rule('/regisNal', 'insert_table', rm.insert_table, methods= ['POST'])
@@ -36,8 +36,9 @@ app.add_url_rule('/regisNalP/<nombre_partido>', 'delete_partido', rp.delete_part
 
 #candidatos
 
+app.add_url_rule('/regisNalC', 'find_candidatos', rc.find_candidatos)
 app.add_url_rule('/regisNalC', 'find_candidato', rc.find_candidato)
-app.add_url_rule('/regisNalC/<nameCandidato>', 'find_candidato', rc.find_candidato)
+app.add_url_rule('/regisNalC/<numberCedula>', 'find_candidato', rc.find_candidato)
 app.add_url_rule('/regisNalC', 'insert_candidato', rc.insert_candidato, methods= ['POST'])
 app.add_url_rule('/regisNalC/<numberCedula>', 'update_candidato', rc.update_candidato, methods= ['PUT'])
 app.add_url_rule('/regisNalC/<numberCedula>', 'delete_candidato', rc.delete_candidato, methods=['DELETE'])
@@ -49,15 +50,19 @@ app.add_url_rule('/regisNalR/<id>', 'find_resultado', rr.find_resultado) # id
 app.add_url_rule('/regisNalR', 'insert_resultado', rr.insert_resultado, methods= ['POST'])
 app.add_url_rule('/regisNalR/<id>', 'update_resultado', rr.update_resultado, methods= ['PUT'])
 app.add_url_rule('/regisNalR/<id>', 'delete_resultado', rr.delete_resultado, methods=['DELETE'])
+
+# reportes de resultados
+app.add_url_rule('/regisNalR/mesa/<id_mesa>/candidato/<id_candidato>',
+    'find_resultado_by_mesa_and_candidato', rr.find_resultado_by_mesa_and_candidato)
+
+
+app.add_url_rule('/regisNalR/candidato/<id_candidato>', 'find_resultado_by_candidato',
+    rr.find_resultado_by_candidato)
 app.add_url_rule('/regisNalR/mesa/<id_mesa>', 'find_resultado_by_mesa', rr.find_resultado_by_mesa)
 app.add_url_rule('/regisNalR/partido/<id_partido>', 'find_resultado_by_partido',
     rr.find_resultado_by_partido)
-app.add_url_rule('/regisNalR/candidato/<id_candidato>', 'find_resultado_by_candidato',
-    rr.find_resultado_by_candidato)
 app.add_url_rule('/regisNalR/mesa/<id_mesa>/partido/<id_partido>',
     'find_resultado_by_mesa_and_partido', rr.find_resultado_by_mesa_and_partido)
-app.add_url_rule('/regisNalR/mesa/<id_mesa>/candidato/<id_candidato>',
-    'find_resultado_by_mesa_and_candidato', rr.find_resultado_by_mesa_and_candidato)
 app.add_url_rule('/regisNalR/partido/<id_partido>/candidato/<id_candidato>',
     'find_resultado_by_partido_and_candidato', rr.find_resultado_by_partido_and_candidato)
 app.add_url_rule('/regisNalR/mesa/<id_mesa>/partido/<id_partido>/candidato/<id_candidato>',

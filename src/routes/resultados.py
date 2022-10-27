@@ -8,7 +8,8 @@ def insert_resultado():
     try:
         resultado_controller.create(body)
         return make_response({
-            'message': 'El resultado ha sido creado satisfactoriamente.'
+            'message': str(body['votos']) + ' voto(s) han sido agregados a la mesa ' +
+            str(body['id_mesa']) + ' y al candidato ' + str(body['id_candidato'])
         }, 201)
     except Exception as ex:
         print(ex)
@@ -26,14 +27,14 @@ def find_resultados():
             'message': 'Hubo un error al obtener la información de los resultados'
         }, 500)
 
-def find_resultado(idResultado):
+def find_resultado(id):
     try:
-        resultados = resultado_controller.get_by_id(idResultado)
+        resultados = resultado_controller.get_by_id(id)
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado' + idResultado + ' no fue encontrado'
+                'message': 'El resultado ' + str(id) + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
@@ -41,16 +42,16 @@ def find_resultado(idResultado):
             'message': 'Hubo un error al obtener la información del resultado'
         }, 500)
 
-def delete_resultado(idResultado):
+def delete_resultado(id):
     try:
-        delete = resultado_controller.delete(idResultado)
+        delete = resultado_controller.delete(id)
         if delete:
             return make_response({
-                'message': 'El resultado' + idResultado + ' fue eliminado satisfactoriamente'
+                'message': 'El resultado ' + str(id) + ' fue eliminado satisfactoriamente'
             }, 200)
         else:
             return make_response({
-                'message': 'El resultado' + idResultado + ' no fue encontrado'
+                'message': 'El resultado ' + str(id) + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
@@ -58,17 +59,17 @@ def delete_resultado(idResultado):
             'message': 'Hubo un error al eliminar el resultado'
         }, 500)
 
-def update_resultado(idResultado):
+def update_resultado(id):
     body = request.get_json()
     try:
-        update = resultado_controller.update(idResultado, body)
+        update = resultado_controller.update(id, body)
         if update:
             return make_response({
-                'message': 'El resultado' + idResultado + ' fue actualizado satisfactoriamente'
+                'message': 'El resultado ' + str(id) + ' fue actualizado satisfactoriamente'
             }, 200)
         else:
             return make_response({
-                'message': 'El resultado' + idResultado + ' no fue encontrado'
+                'message': 'El resultado ' + str(id) + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
@@ -76,107 +77,107 @@ def update_resultado(idResultado):
             'message': 'Hubo un error al actualizar el resultado'
         }, 500)
 
-def find_resultado_by_mesa(idMesa):
+def find_resultado_by_mesa(id_mesa):
     try:
-        resultados = resultado_controller.get_by_mesa(idMesa)
+        resultados = resultado_controller.get_by_mesa(id_mesa)
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado de la mesa ' + idMesa + ' no fue encontrado'
+                'message': 'El resultado de la mesa ' + id_mesa + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del resultado de la mesa ' + idMesa
+            'message': 'Hubo un error al obtener la información del resultado de la mesa ' + id_mesa
         }, 500)
 
-def find_resultado_by_partido(idPartido):
+def find_resultado_by_partido(id_partido):
     try:
-        resultados = resultado_controller.get_by_partido(idPartido)
+        resultados = resultado_controller.get_by_partido(id_partido)
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado del partido ' + idPartido + ' no fue encontrado'
+                'message': 'El resultado del partido ' + id_partido + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del resultado del partido ' + idPartido
+            'message': 'Hubo un error al obtener la información del resultado del partido ' + id_partido
         }, 500)
 
-def find_resultado_by_candidato(idCandidato):
+def find_resultado_by_candidato(id_candidato):
     try:
-        resultados = resultado_controller.get_by_candidato(idCandidato)
+        resultados = resultado_controller.get_by_candidato(id_candidato)
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado del candidato ' + idCandidato + ' no fue encontrado'
+                'message': 'El resultado del candidato ' + id_candidato + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del resultado del candidato ' + idCandidato
+            'message': 'Hubo un error al obtener la información del resultado del candidato ' + id_candidato
         }, 500)
 
-def find_resultado_by_mesa_and_partido(idMesa, idPartido):
+def find_resultado_by_mesa_and_partido(id_mesa, id_partido):
     try:
-        resultados = resultado_controller.get_by_mesa_and_partido(idMesa, idPartido)
+        resultados = resultado_controller.get_by_mesa_and_partido(id_mesa, id_partido)
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado de la mesa ' + idMesa + ' y del partido ' + idPartido + ' no fue encontrado'
+                'message': 'El resultado de la mesa ' + id_mesa + ' y del partido ' + id_partido + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del resultado de la mesa ' + idMesa + ' y del partido ' + idPartido
+            'message': 'Hubo un error al obtener la información del resultado de la mesa ' + id_mesa + ' y del partido ' + id_partido
         }, 500)
 
-def find_resultado_by_mesa_and_candidato(idMesa, idCandidato):
+def find_resultado_by_mesa_and_candidato(id_mesa, id_candidato):
     try:
-        resultados = resultado_controller.get_by_mesa_and_candidato(idMesa, idCandidato)
+        resultados = resultado_controller.get_by_mesa_and_candidato(id_mesa, id_candidato)
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado de la mesa ' + idMesa + ' y del candidato ' + idCandidato + ' no fue encontrado'
+                'message': 'El resultado de la mesa ' + id_mesa + ' y del candidato ' + id_candidato + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del resultado de la mesa ' + idMesa + ' y del candidato ' + idCandidato
+            'message': 'Hubo un error al obtener la información: ' + str(ex)
         }, 500)
 
-def find_resultado_by_partido_and_candidato(idPartido, idCandidato):
+def find_resultado_by_partido_and_candidato(id_partido, id_candidato):
     try:
-        resultados = resultado_controller.get_by_partido_and_candidato(idPartido, idCandidato)
+        resultados = resultado_controller.get_by_partido_and_candidato(id_partido, id_candidato)
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado del partido ' + idPartido + ' y del candidato ' + idCandidato + ' no fue encontrado'
+                'message': 'El resultado del partido ' + id_partido + ' y del candidato ' + id_candidato + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del resultado del partido ' + idPartido + ' y del candidato ' + idCandidato
+            'message': 'Hubo un error al obtener la información del resultado del partido ' + id_partido + ' y del candidato ' + id_candidato
         }, 500)
 
-def find_resultado_by_mesa_and_partido_and_candidato(idMesa, idPartido, idCandidato):
+def find_resultado_by_mesa_and_partido_and_candidato(id_mesa, id_partido, id_candidato):
     try:
-        resultados = resultado_controller.get_by_mesa_and_partido_and_candidato(idMesa, idPartido, idCandidato)
+        resultados = resultado_controller.get_by_mesa_and_partido_and_candidato(id_mesa, id_partido, id_candidato)
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado de la mesa ' + idMesa + ', del partido ' + idPartido + ' y del candidato ' + idCandidato + ' no fue encontrado'
+                'message': 'El resultado de la mesa ' + id_mesa + ', del partido ' + id_partido + ' y del candidato ' + id_candidato + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del resultado de la mesa ' + idMesa + ', del partido ' + idPartido + ' y del candidato ' + idCandidato
+            'message': 'Hubo un error al obtener la información del resultado de la mesa ' + id_mesa + ', del partido ' + id_partido + ' y del candidato ' + id_candidato
         }, 500)
