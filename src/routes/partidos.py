@@ -9,11 +9,11 @@ def insert_partido():
         partidos = partido_controller.get_by_id(body['nombre_partido'])
         if partidos:
             return make_response({
-                'message': 'El partido' + body['nombre_partido'] + ' Ya está registrado en el sistema'
+                'message': 'El partido ' + body['nombre_partido'] + ' Ya está registrado en el sistema'
             }, 400)
         partido_controller.create(body)
         return make_response({
-            'message': 'El partido' + body['nombre_partido'] + ' ha sido creado satisfactoriamente.'
+            'message': 'El partido ' + body['nombre_partido'] + ' ha sido creado satisfactoriamente.'
         }, 201)
     except Exception as ex:
         print(ex)

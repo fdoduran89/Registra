@@ -152,19 +152,34 @@ def find_resultado_by_mesa_and_candidato(id_mesa, id_candidato):
             'message': 'Hubo un error al obtener la información: ' + str(ex)
         }, 500)
 
-def find_resultado_by_partido_and_candidato(id_partido, id_candidato):
+def candidato_partido_votos_desc():
     try:
-        resultados = resultado_controller.get_by_partido_and_candidato(id_partido, id_candidato)
+        resultados = resultado_controller.candidato_partido_votos_desc()
         if resultados:
             return make_response(jsonify(resultados), 200)
         else:
             return make_response({
-                'message': 'El resultado del partido ' + id_partido + ' y del candidato ' + id_candidato + ' no fue encontrado'
+                'message': 'No se encontraron resultados'
             }, 404)
     except Exception as ex:
         print(ex)
         return make_response({
-            'message': 'Hubo un error al obtener la información del resultado del partido ' + id_partido + ' y del candidato ' + id_candidato
+            'message': 'Hubo un error al obtener la información: ' + str(ex)
+        }, 500)
+
+def candidato_mesa_partido_votos():
+    try:
+        resultados = resultado_controller.candidato_mesa_partido_votos()
+        if resultados:
+            return make_response(jsonify(resultados), 200)
+        else:
+            return make_response({
+                'message': 'No se encontraron resultados'
+            }, 404)
+    except Exception as ex:
+        print(ex)
+        return make_response({
+            'message': 'Hubo un error al obtener la información: ' + str(ex)
         }, 500)
 
 def find_resultado_by_mesa_and_partido_and_candidato(id_mesa, id_partido, id_candidato):
@@ -180,4 +195,64 @@ def find_resultado_by_mesa_and_partido_and_candidato(id_mesa, id_partido, id_can
         print(ex)
         return make_response({
             'message': 'Hubo un error al obtener la información del resultado de la mesa ' + id_mesa + ', del partido ' + id_partido + ' y del candidato ' + id_candidato
+        }, 500)
+
+def mesa_votos():
+    try:
+        resultados = resultado_controller.mesa_votos()
+        if resultados:
+            return make_response(jsonify(resultados), 200)
+        else:
+            return make_response({
+                'message': 'No se encontraron resultados'
+            }, 404)
+    except Exception as ex:
+        print(ex)
+        return make_response({
+            'message': 'Hubo un error al obtener la información: ' + str(ex)
+        }, 500)
+
+def partido_votos():
+    try:
+        resultados = resultado_controller.partido_votos()
+        if resultados:
+            return make_response(jsonify(resultados), 200)
+        else:
+            return make_response({
+                'message': 'No se encontraron resultados'
+            }, 404)
+    except Exception as ex:
+        print(ex)
+        return make_response({
+            'message': 'Hubo un error al obtener la información: ' + str(ex)
+        }, 500)
+
+def partido_mesa_votos():
+    try:
+        resultados = resultado_controller.partido_mesa_votos()
+        if resultados:
+            return make_response(jsonify(resultados), 200)
+        else:
+            return make_response({
+                'message': 'No se encontraron resultados'
+            }, 404)
+    except Exception as ex:
+        print(ex)
+        return make_response({
+            'message': 'Hubo un error al obtener la información: ' + str(ex)
+        }, 500)
+
+def percentage_by_partido():
+    try:
+        resultados = resultado_controller.percentage_by_partido()
+        if resultados:
+            return make_response(jsonify(resultados), 200)
+        else:
+            return make_response({
+                'message': 'No se encontraron resultados'
+            }, 404)
+    except Exception as ex:
+        print(ex)
+        return make_response({
+            'message': 'Hubo un error al obtener la información: ' + str(ex)
         }, 500)
