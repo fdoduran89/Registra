@@ -21,3 +21,6 @@ class PartidoController(CRUDController):
     
     def delete(self, id_item):
         return self.partidoRepository.delete(id_item)
+
+    def partido_votos(self):
+        return self.partidoRepository.partido_votos()

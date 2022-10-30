@@ -1,3 +1,4 @@
+import pdb
 from flask import Flask
 from config import config
 import routes.mesa as rm
@@ -5,7 +6,6 @@ import routes.partidos as rp
 import routes.candidato as rc
 import routes.resultados as rr
 from flask_mongoengine import MongoEngine
-
 
 app = Flask(__name__)
 app.config['MONGODB_HOST'] = config['MONGO_URI']
@@ -52,22 +52,18 @@ app.add_url_rule('/regisNalR/<id>', 'update_resultado', rr.update_resultado, met
 app.add_url_rule('/regisNalR/<id>', 'delete_resultado', rr.delete_resultado, methods=['DELETE'])
 
 # reportes de resultados
+app.add_url_rule('/regisNalR/candidato_partido_votos_desc', 'candidato_partido_votos_desc',
+    rr.candidato_partido_votos_desc)
+app.add_url_rule('/regisNalR/candidato_mesa_partido_votos', 'candidato_mesa_partido_votos',
+    rr.candidato_mesa_partido_votos)
+app.add_url_rule('/regisNalR/mesa_votos', 'mesa_votos', rr.mesa_votos)
+app.add_url_rule('/regisNalR/partido_votos', 'partido_votos', rr.partido_votos)
+app.add_url_rule('/regisNalR/partido_mesa_votos', 'partido_mesa_votos', rr.partido_mesa_votos)
+app.add_url_rule('/regisNalR/percentage_by_partido', 'percentage_by_partido',
+    rr.percentage_by_partido)
 app.add_url_rule('/regisNalR/mesa/<id_mesa>/candidato/<id_candidato>',
     'find_resultado_by_mesa_and_candidato', rr.find_resultado_by_mesa_and_candidato)
 
-
-app.add_url_rule('/regisNalR/candidato/<id_candidato>', 'find_resultado_by_candidato',
-    rr.find_resultado_by_candidato)
-app.add_url_rule('/regisNalR/mesa/<id_mesa>', 'find_resultado_by_mesa', rr.find_resultado_by_mesa)
-app.add_url_rule('/regisNalR/partido/<id_partido>', 'find_resultado_by_partido',
-    rr.find_resultado_by_partido)
-app.add_url_rule('/regisNalR/mesa/<id_mesa>/partido/<id_partido>',
-    'find_resultado_by_mesa_and_partido', rr.find_resultado_by_mesa_and_partido)
-app.add_url_rule('/regisNalR/partido/<id_partido>/candidato/<id_candidato>',
-    'find_resultado_by_partido_and_candidato', rr.find_resultado_by_partido_and_candidato)
-app.add_url_rule('/regisNalR/mesa/<id_mesa>/partido/<id_partido>/candidato/<id_candidato>',
-    'find_resultado_by_mesa_and_partido_and_candidato',
-    rr.find_resultado_by_mesa_and_partido_and_candidato)
 
 
 

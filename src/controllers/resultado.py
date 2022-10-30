@@ -24,21 +24,27 @@ class ResultadoController(CRUDController):
 
     def get_by_mesa(self, id_item):
         return self.resultadoRepository.get_by_mesa(id_item)
-    
-    # def get_by_partido(self, id_item):
-    #     return self.resultadoRepository.get_by_partido(id_item)
 
     def get_by_candidato(self, id_item):
         return self.resultadoRepository.get_by_candidato(id_item)
 
-    # def get_by_mesa_and_partido(self, id_mesa, id_partido):
-    #     return self.resultadoRepository.get_by_mesa_and_partido(id_mesa, id_partido)
-
     def get_by_mesa_and_candidato(self, id_mesa, id_candidato):
         return self.resultadoRepository.get_sum_mesa_candidato(id_mesa, id_candidato)
 
-    # def get_by_partido_and_candidato(self, id_partido, id_candidato):
-    #     return self.resultadoRepository.get_by_partido_and_candidato(id_partido, id_candidato)
+    def candidato_partido_votos_desc(self):
+        return self.resultadoRepository.candidato_partido_votos_desc()
 
-    # def get_by_mesa_and_partido_and_candidato(self, id_mesa, id_partido, id_candidato):
-    #     return self.resultadoRepository.get_by_mesa_and_partido_and_candidato(id_mesa, id_partido, id_candidato)
+    def candidato_mesa_partido_votos(self):
+        return self.resultadoRepository.candidato_mesa_partido_votos()
+
+    def mesa_votos(self):
+        return self.resultadoRepository.mesa_votos()
+
+    def partido_votos(self):
+        return self.resultadoRepository.partido_votos()
+    
+    def partido_mesa_votos(self):
+        return self.resultadoRepository.partido_mesa_votos()
+
+    def percentage_by_partido(self):
+        return self.resultadoRepository.percentage_by_partido()
