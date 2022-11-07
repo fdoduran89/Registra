@@ -15,6 +15,7 @@ class CandidatoRepository():
             
             numberResolucion = content['numberResolucion'],
             nameCandidato = content['nameCandidato'],
+            apellidoCandidato = content['apellidoCandidato'],
             numberCedula = content['numberCedula']            
         )
         candidato.save()

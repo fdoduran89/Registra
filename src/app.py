@@ -18,7 +18,7 @@ def index():
 
 #Mesas
 app.add_url_rule('/', 'index', index)
-app.add_url_rule('/regisNal', 'find_tables', rm.find_tables)
+app.add_url_rule('/regisNal', 'find_tables', rm.find_table, methods= ['GET'])
 app.add_url_rule('/regisNal/<Nmesa>', 'find_table', rm.find_table)
 app.add_url_rule('/regisNal', 'insert_table', rm.insert_table, methods= ['POST'])
 app.add_url_rule('/regisNal/<Nmesa>', 'update_table', rm.update_table, methods= ['PUT'])
