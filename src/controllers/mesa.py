@@ -3,7 +3,7 @@ from controllers.abstract import CRUDController
 from repositorios.mesa import MesaRepository
 
 class MesaController(CRUDController):
-    def __init__(self):
+    def __init__(self) -> None:
         self.mesaRepository = MesaRepository()
 
     

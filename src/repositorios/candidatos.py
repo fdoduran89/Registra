@@ -10,13 +10,17 @@ class CandidatoRepository():
             candidato.append(candi)
         return candidato
     
+    def get_by_id(self, id_item):
+        return Candidato.objects(numberCedula= id_item).first()
+
     def create(self, content):
         candidato = Candidato(
-            
-            numberResolucion = content['numberResolucion'],
-            nameCandidato = content['nameCandidato'],
-            apellidoCandidato = content['apellidoCandidato'],
-            numberCedula = content['numberCedula']            
+
+            numberCedula=content['numberCedula'],
+            numberResolucion=content['numberResolucion'],
+            nameCandidato=content['nameCandidato'],
+            apellidoCandidato=content['apellidoCandidato'] ,
+            id_partido=content['id_partido']                    
         )
         candidato.save()
         return candidato
@@ -25,9 +29,11 @@ class CandidatoRepository():
         candidatos = self.get_by_id(id_item)
         if candidatos:
             candidatos.update(
-                numberResolucion = content.get('numberResolucion', candidatos.numberResolucion),
-                nameCandidato = content.get('nameCandidato', candidatos.nameCandidato),
-                numberCedula = content.get('numberCedula', candidatos.numberCedula)
+                numberCedula=content.get('numberCedula', candidatos.numberCedula),
+                numberResolucion=content.get('numberResolucion', candidatos.numberResolucion),
+                nameCandidato=content.get('nameCandidato', candidatos.nameCandidato),
+                apellidoCandidato=content.get('apellidoCandidato', candidatos.apellidoCandidato),
+                id_partido=content.get('id_partido', candidatos.id_partido)
             )
             return candidatos
         return None

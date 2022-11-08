@@ -3,19 +3,17 @@ from controllers.partidos import PartidoController
 
 partido_controller = PartidoController()
 
-# create partido
-
 def insert_partido():
     body = request.get_json()
     try:
         partidos = partido_controller.get_by_id(body['nombre_partido'])
         if partidos:
             return make_response({
-                'message': 'El partido' + body['nombre_partido'] + ' Ya está registrado en el sistema'
+                'message': 'El partido ' + body['nombre_partido'] + ' Ya está registrado en el sistema'
             }, 400)
         partido_controller.create(body)
         return make_response({
-            'message': 'El partido' + body['nombre_partido'] + ' ha sido creado satisfactoriamente.'
+            'message': 'El partido ' + body['nombre_partido'] + ' ha sido creado satisfactoriamente.'
         }, 201)
     except Exception as ex:
         print(ex)
@@ -23,7 +21,6 @@ def insert_partido():
             'message': 'Hubo un error en la creación del partido'
         }, 500)
 
-# Find partidos
 def find_partidos():
     try:
         partidos = partido_controller.get_all()
@@ -35,7 +32,6 @@ def find_partidos():
             'message': 'Hubo un error al obtener la información de los partidos'
         }, 500)
 
-# Find partido
 def find_partido(nombre_partido):
     try:
         partidos = partido_controller.get_by_id(nombre_partido)
@@ -51,7 +47,6 @@ def find_partido(nombre_partido):
             'message': 'Hubo un error al obtener la información del partido'
         }, 500)
 
-# delete partido
 def delete_partido(nombre_partido):
     try:
         delete = partido_controller.delete(nombre_partido)
@@ -69,7 +64,6 @@ def delete_partido(nombre_partido):
             'message': 'Hubo un error al eliminar el partido'
         }, 500)
 
-# update partido
 def update_partido(nombre_partido):
     body = request.get_json()
     try:
