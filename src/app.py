@@ -64,6 +64,8 @@ app.add_url_rule('/regisNalR/percentage_by_partido', 'percentage_by_partido',
 app.add_url_rule('/regisNalR/mesa/<id_mesa>/candidato/<id_candidato>',
     'find_resultado_by_mesa_and_candidato', rr.find_resultado_by_mesa_and_candidato)
 
+app.add_url_rule('/regisNalR/delete_database', 'delete_database', rr.delete_database)
+
 
 
 

@@ -256,3 +256,15 @@ def percentage_by_partido():
         return make_response({
             'message': 'Hubo un error al obtener la información: ' + str(ex)
         }, 500)
+
+def delete_database():
+    try:
+        resultado_controller.delete_database()
+        return make_response({
+            'message': 'La base de datos ha sido reseteada'
+        }, 200)
+    except Exception as ex:
+        print(ex)
+        return make_response({
+            'message': 'Hubo un error al reseteada la base de datos'
+        }, 500)

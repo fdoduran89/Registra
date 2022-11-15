@@ -48,3 +48,6 @@ class ResultadoController(CRUDController):
 
     def percentage_by_partido(self):
         return self.resultadoRepository.percentage_by_partido()
+    
+    def delete_database(self):
+        return self.resultadoRepository.delete_database()

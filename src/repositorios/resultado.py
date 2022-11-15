@@ -217,3 +217,10 @@ class ResultadoRepository():
         for candidato in partido_cadidatos:
             votos += self.get_sum_votos_by_candidato(candidato.id.__str__())
         return votos
+
+#   def delete_database delete all resultados, candidatos, mesas and partidos
+    def delete_database(self):
+        Resultado.drop_collection()
+        Candidato.drop_collection()
+        Mesa.drop_collection()
+        Partido.drop_collection()
