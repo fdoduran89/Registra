@@ -1,4 +1,7 @@
 from models.candidatos import Candidato
+from models.partidos import Partido
+import json
+
 
 class CandidatoRepository():
     def __init__(self) -> None:
@@ -7,7 +10,9 @@ class CandidatoRepository():
     def get_all(self):
         candidato = []
         for candi in Candidato.objects:
-            candidato.append(candi)
+            c = json.loads(candi.to_json())
+            partido = Partido.objects(pk= c['id_partido'])
+            candidato.append({ **c, 'partido': partido[0].nombre_partido})
         return candidato
     
     def get_by_id(self, id_item):
