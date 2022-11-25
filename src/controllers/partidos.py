@@ -10,8 +10,11 @@ class PartidoController(CRUDController):
     def get_all(self):
         return self.partidoRepository.get_all()
     
-    def get_by_id(self, id_item):
-        return self.partidoRepository.get_by_id(id_item)
+    def get_by_id(self, id):
+        return self.partidoRepository.get_by_id(id)
+    
+    def get_by_nombre(self, id_item):
+        return self.partidoRepository.get_by_nombre(id_item)
     
     def create(self, content):
         return self.partidoRepository.create(content)

@@ -29,6 +29,8 @@ app.add_url_rule('/regisNal/<Nmesa>', 'delete_table', rm.delete_table, methods= 
 #partidos
 app.add_url_rule('/regisNalP', 'find_partidos', rp.find_partidos)
 app.add_url_rule('/regisNalP/<nombre_partido>', 'find_partido', rp.find_partido)
+# buscar partido por id
+app.add_url_rule('/regisNalP/id/<id>', 'find_partido_by_id', rp.find_partido_by_id)
 app.add_url_rule('/regisNalP', 'insert_partido', rp.insert_partido, methods= ['POST'])
 app.add_url_rule('/regisNalP/<nombre_partido>', 'update_partido', rp.update_partido, methods= ['PUT'])
 app.add_url_rule('/regisNalP/<nombre_partido>', 'delete_partido', rp.delete_partido, methods= ['DELETE'])

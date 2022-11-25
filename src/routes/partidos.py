@@ -34,12 +34,27 @@ def find_partidos():
 
 def find_partido(nombre_partido):
     try:
-        partidos = partido_controller.get_by_id(nombre_partido)
+        partidos = partido_controller.get_by_nombre(nombre_partido)
         if partidos:
             return make_response(jsonify(partidos), 200)
         else:
             return make_response({
                 'message': 'El partido' + nombre_partido + ' no fue encontrado'
+            }, 404)
+    except Exception as ex:
+        print(ex)
+        return make_response({
+            'message': 'Hubo un error al obtener la información del partido'
+        }, 500)
+
+def find_partido_by_id(id):
+    try:
+        partidos = partido_controller.get_by_id(id)
+        if partidos:
+            return make_response(jsonify(partidos), 200)
+        else:
+            return make_response({
+                'message': 'El partido' + id_partido + ' no fue encontrado'
             }, 404)
     except Exception as ex:
         print(ex)

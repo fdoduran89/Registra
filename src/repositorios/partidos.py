@@ -10,8 +10,11 @@ class PartidoRepository():
             partidos.append(part)
         return partidos
     
-    def get_by_id(self, id_item):
+    def get_by_nombre(self, id_item):
         return Partido.objects(nombre_partido= id_item).first()
+    
+    def get_by_id(self, id_item):
+        return Partido.objects(id=id_item).first()
     
     def create(self, content):
         partidos = Partido(
