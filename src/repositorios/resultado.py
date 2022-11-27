@@ -6,12 +6,23 @@ from repositorios.candidatos import CandidatoRepository
 from repositorios.partidos import PartidoRepository
 from repositorios.mesa import MesaRepository
 from collections import Counter
+import json
 
 class ResultadoRepository():
     def __init__(self) -> None:
         super().__init__()
 
     def get_all(self):
+        resultado = []
+        for res in Resultado.objects:
+            cjson = json.loads(res.to_json())
+            candidato = Candidato.objects(id= cjson['id_candidato']).first()
+            partido = Partido.objects(id= candidato.id_partido).first()
+            resultado.append({ **cjson, 'candidato': "{} {}".format(candidato.nameCandidato,
+                candidato.apellidoCandidato), 'partido': partido.nombre_partido })
+        return resultado
+    
+    def get_all_objects(self):
         resultado = []
         for res in Resultado.objects:
             resultado.append(res)
@@ -91,7 +102,7 @@ class ResultadoRepository():
         return Candidato.objects(id= id_candidato).first() != None
 
     def candidato_mesa_partido_votos(self):
-        candidatos = CandidatoRepository.get_all(self)
+        candidatos = CandidatoRepository.get_all_objects(self)
         mesas = MesaRepository.get_all(self)
         votos_por_candidato = []
         for mesa in mesas:
@@ -154,7 +165,7 @@ class ResultadoRepository():
         return sorted(votos_por_partido, key= lambda i: i['votos'], reverse= True)
 
     def candidato_partido_votos_desc(self):
-        candidatos = CandidatoRepository.get_all(self)
+        candidatos = CandidatoRepository.get_all_objects(self)
         votos_por_candidato = []
         for candidato in candidatos:
             nombre_partido = Partido.objects(id= candidato.id_partido).first().nombre_partido

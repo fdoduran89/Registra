@@ -15,6 +15,12 @@ class CandidatoRepository():
             candidato.append({ **c, 'partido': partido[0].nombre_partido})
         return candidato
     
+    def get_all_objects(self):
+        candidato = []
+        for candi in Candidato.objects:
+            candidato.append(candi)
+        return candidato
+    
     def get_by_id(self, id_item):
         return Candidato.objects(numberCedula= id_item).first()
 
