@@ -6,7 +6,7 @@ partido_controller = PartidoController()
 def insert_partido():
     body = request.get_json()
     try:
-        partidos = partido_controller.get_by_id(body['nombre_partido'])
+        partidos = partido_controller.get_by_nombre(body['nombre_partido'])
         if partidos:
             return make_response({
                 'message': 'El partido ' + body['nombre_partido'] + ' Ya está registrado en el sistema'
